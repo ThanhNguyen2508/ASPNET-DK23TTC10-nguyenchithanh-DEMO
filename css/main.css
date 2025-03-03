@@ -2429,6 +2429,13 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-bottom: 30px;
 }
 
+.single-menu img {
+  width: 350px; /* Định chiều rộng */
+  height: 200px; /* Định chiều cao */
+  object-fit: cover; /* Đảm bảo ảnh không bị méo */
+  border-radius: 10px; /* Bo góc nhẹ cho đẹp */
+}
+
 .single-menu .title-div {
   padding-bottom: 20px;
 }
