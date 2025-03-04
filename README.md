@@ -1,6 +1,13 @@
+
 # ASPNET-DK23TTC10-nguyenchithanh-DEMO
 Đồ án môn học: Chuyên đề ASP.NET
---- Tiến độ 28/2/2025
+--- Tiến độ 28/2/2025 
 Code giao diện website
 --- Tiến độ 01/03/2025
 Code giao diện website
+--- Tiến độ 02/03,03/03
+Thêm tính năng review và code database
+=======
+--- Tiến độ 03/03/2025
+Thiết kết database và code script tạo db
+
