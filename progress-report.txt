@@ -7,3 +7,7 @@ Code giao diện website
 Code giao diện website
 --- Tiến độ 02/03,03/03
 Thêm tính năng review và code database
+=======
+--- Tiến độ 03/03/2025
+Thiết kết database và code script tạo db
+
