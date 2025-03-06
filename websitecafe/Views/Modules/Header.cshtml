@@ -21,14 +21,20 @@
             <div id="logo">
                 <a href="@Url.Action("Index", "Home")"><img src="~/Content/img/logo.png" alt="Logo" title="Trang chủ" /></a>
             </div>
+            @{ var userInfomatiom = (websitecafe.Models.User)Session["USER"]; }
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
                     <li class="menu-active"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
                     <li><a href="#about">Về chúng tôi</a></li>
-                    <li><a href="#coffee">Coffee</a></li>
-                    <li><a href="#review">Review</a></li>
-                    <li><a href="#blog">Tin tức</a></li>
-                    @{ var userInfomatiom = (websitecafe.Models.User)Session["USER"]; }
+                    @if (userInfomatiom != null)
+                    {
+                        <li><a href="@Url.Action("Index", "Product")">Coffee</a></li>
+                    }
+                    @if (userInfomatiom != null)
+                    {
+                        <li><a href="@Url.Action("Index", "News")">Tin tức</a></li>
+                    }
+                   
                     @if (userInfomatiom != null)
                     {
                         <li>

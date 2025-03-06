@@ -1,0 +1,98 @@
+﻿<style>
+    .product-detail {
+        max-width: 900px;
+        margin: auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 10px;
+    }
+
+    .product-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .product-image img {
+        width: 300px;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .product-info {
+        flex-grow: 1;
+    }
+
+    .contact-info {
+        margin-top: 15px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+    }
+
+        .contact-info i {
+            color: #6F4E37;
+            margin-right: 5px;
+        }
+
+    .btn-coffee {
+        background-color: #6F4E37;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+        display: inline-block;
+        margin-top: 10px;
+        transition: 0.3s;
+    }
+
+        .btn-coffee:hover {
+            background-color: #5a3d2b;
+            transform: scale(1.05);
+        }
+
+    .banner-area {
+        background: #6F4E37;
+        padding: 40px 0;
+        color: white;
+        text-align: center;
+    }
+
+    .product-description {
+        margin-top: 20px;
+        padding: 15px;
+        background: #f9f9f9;
+        border-radius: 10px;
+    }
+</style>
+
+<section class="banner-area">
+    <div class="container">
+        <h1>Chi Tiết Sản Phẩm</h1>
+    </div>
+</section>
+
+<section class="container product-detail">
+    <div class="product-header">
+        <div class="product-image">
+            <img src="@Model.ImageUrl" alt="@Model.Name">
+        </div>
+        <div class="product-info">
+            <h2>@Model.Name</h2>
+            <p class="category-label"><i class="fa fa-tag"></i> @Model.Category.Name</p>
+            <h4 class="text-danger">@String.Format("{0:N0} VNĐ", Model.Price)</h4>
+            <p class="text-muted"><i class="fa fa-eye"></i> @Model.View lượt xem</p>
+
+            <div class="contact-info">
+                <i class="fa fa-phone"></i> Liên hệ: <strong>0122231445</strong>
+            </div>
+
+            <a href="tel:0122231445" class="btn btn-coffee">
+                <i class="fa fa-phone"></i> Gọi ngay
+            </a>
+        </div>
+    </div>
+    <div class="product-description">
+        <p>@Html.Raw(Model.Description)</p>
+    </div>
+</section>

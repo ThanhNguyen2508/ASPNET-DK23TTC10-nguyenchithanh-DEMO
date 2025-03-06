@@ -1,7 +1,28 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+<style>
+    /* Nhãn danh mục */
+    .category-label {
+        font-weight: bold;
+        color: #6F4E37;
+        background: #EDE0D4;
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 14px;
+    }
+    .topic-label {
+        font-weight: bold;
+        color: #6F4E37;
+        background: #EDE0D4;
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 14px;
+        margin-top: 10px
+    }
+</style>
 <main>
     <section class="banner-area" id="home">
         <div class="container">
@@ -12,7 +33,7 @@
                         Bắt đầu ngày mới <br>
                         với một ly Cà Phê
                     </h1>
-                    <a href="#" class="primary-btn text-uppercase">Tìm hiểu thêm</a>
+                    <a href="@Url.Action("Index", "Product")" class="primary-btn text-uppercase">Tìm hiểu thêm về sản phẩm</a>
                 </div>
             </div>
         </div>
@@ -54,6 +75,8 @@
                     </div>
                 </div>
             </div>
+            @{ var userInfomatiom = (websitecafe.Models.User)Session["USER"]; }
+
             <div class="row">
                 @if (ViewBag.Products != null)
                 {
@@ -61,12 +84,45 @@
                     {
                         <div class="col-lg-4">
                             <div class="single-menu text-center">
-                                <img src="https://toplistcafe.com/wp-content/uploads/2021/01/torani-1.jpg" class="img-fluid mb-3" alt="@product.Name">
+                                @if (userInfomatiom != null)
+                                {
+                                    <a href="@Url.Action("Details", "Product", new { id = product.Id })" style="display: block;">
+                                        <img src="~/Content/imges/@product.ImageUrl" class="img-fluid mb-3" alt="@product.Name">
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("Login", "Authentication")" style="display: block;" onclick="return confirm('Bạn cần đăng nhập để xem chi tiết sản phẩm!')">
+                                        <img src="~/Content/imges/@product.ImageUrl" class="img-fluid mb-3" alt="@product.Name">
+                                    </a>
+                                }
+
                                 <div class="title-div justify-content-between d-flex">
-                                    <h4>@product.Name</h4>
-                                    <p class="price float-right">@String.Format("{0:N0} VNĐ", product.Price)</p> <!-- Định dạng tiền tệ -->
+                                    <h4>
+                                        @if (userInfomatiom != null)
+                                        {
+                                            <a href="@Url.Action("Details", "Product", new { id = product.Id })" style="text-decoration: none; color: inherit;">
+                                                @product.Name
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a href="@Url.Action("Login", "Authentication")" style="text-decoration: none; color: inherit;" onclick="return confirm('Bạn cần đăng nhập để xem chi tiết sản phẩm!')">
+                                                @product.Name
+                                            </a>
+                                        }
+                                    </h4>
+                                    <p class="price float-right">@String.Format("{0:N0} VNĐ", product.Price)</p>
                                 </div>
-                                <p>@product.Description</p>
+
+                                <p class="category-label"><i class="fa fa-tag"></i> @product.Category.Name</p>
+                                @{
+                                    var maxLength = 100;
+                                    var description = product.Description.Length > maxLength
+                                        ? product.Description.Substring(0, maxLength) + "..."
+                                        : product.Description;
+                                }
+                                <p>@Html.Raw(description)</p>
                                 <p class="text-muted"><i class="fa fa-eye"></i> @product.View lượt xem</p>
                             </div>
                         </div>
@@ -77,10 +133,16 @@
                     <p class="text-center">Không có sản phẩm nào để hiển thị.</p>
                 }
             </div>
-
             <!-- Nút Xem Thêm -->
             <div class="row d-flex justify-content-center mt-4">
-                <a href="@Url.Action("Index", "Product")" class="btn btn-coffee">Xem thêm</a>
+                @if (userInfomatiom != null)
+                {
+                    <a href="@Url.Action("Index", "Product")" class="btn btn-coffee">Xem thêm</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Login", "Authentication")" class="btn btn-coffee" onclick="return confirm('Bạn cần đăng nhập để xem thêm sản phẩm!')">Xem thêm</a>
+                }
             </div>
         </div>
     </section>
@@ -187,31 +249,38 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6 col-md-6 single-blog">
-                    <img class="img-fluid" src="~/Content/img/b1.jpg" alt="Bài viết 1">
-                    <ul class="post-tags">
-                        <li><a href="#">Cà phê</a></li>
-                        <li><a href="#">Tháng 2, 2025</a></li>
-                    </ul>
-                    <a href="#">
-                        <h4>Cách pha Espresso hoàn hảo tại nhà</h4>
-                    </a>
-                    <p>Học cách pha một ly espresso thơm ngon chỉ với những dụng cụ cơ bản.</p>
-                    <a href="#" class="primary-btn">Xem thêm</a>
-                </div>
-                <div class="col-lg-6 col-md-6 single-blog">
-                    <img class="img-fluid" src="~/Content/img/b2.jpg" alt="Bài viết 2">
-                    <ul class="post-tags">
-                        <li><a href="#">Công thức</a></li>
-                        <li><a href="#">Tháng 2, 2025</a></li>
-                    </ul>
-                    <a href="#">
-                        <h4>Công thức pha Cappuccino chuẩn Ý</h4>
-                    </a>
-                    <p>Khám phá bí quyết tạo bọt sữa mịn và tỉ lệ cà phê sữa chuẩn Ý.</p>
-                    <a href="#" class="primary-btn">Xem thêm</a>
-                </div>
+                @if (ViewBag.News != null)
+                {
+                    foreach (var news in (List<websitecafe.Models.News>)ViewBag.News)
+                    {
+                        <div class="col-lg-6 col-md-6 single-blog">
+                            <a href="@Url.Action("Details", "News", new { id = news.Id })" style="display: block;">
+                                <img class="img-fluid" src="~/Content/imges/@news.ImageUrl" alt="@news.Title">
+                            </a>
+                            <p class="topic-label"><i class="fa fa-tag"></i> @news.Topic.Name</p>
+                            <a href="@Url.Action("Details", "News", new { id = news.Id })">
+                                <h4>@news.Title</h4>
+                            </a>
+                            <p>@news.ShortDescription</p>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p class="text-center">Không có tin tức nào để hiển thị.</p>
+                }
+            </div>
+            <div class="row d-flex justify-content-center mt-4">
+                @if (userInfomatiom != null)
+                {
+                    <a href="@Url.Action("Index", "News")" class="btn btn-coffee">Xem thêm</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Login", "Authentication")" class="btn btn-coffee" onclick="return confirm('Bạn cần đăng nhập để xem thêm sản phẩm!')">Xem thêm</a>
+                }
             </div>
         </div>
     </section>
+
 </main>

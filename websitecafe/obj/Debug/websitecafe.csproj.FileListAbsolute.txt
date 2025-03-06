@@ -314,10 +314,9 @@ C:\Users\Administrator\Desktop\websiteasp_cafe\websitecafe\bin\zh-Hant\Microsoft
 C:\Users\Administrator\Desktop\websiteasp_cafe\websitecafe\obj\Debug\websitecafe.csproj.AssemblyReference.cache
 C:\Users\Administrator\Desktop\websiteasp_cafe\websitecafe\obj\Debug\websitecafe.csproj.SuggestedBindingRedirects.cache
 C:\Users\Administrator\Desktop\websiteasp_cafe\websitecafe\obj\Debug\websitecafe.dll.config
-C:\Users\Administrator\Desktop\websiteasp_cafe\websitecafe\obj\Debug\websitecafe.Migrations.InitialCreate.resources
-C:\Users\Administrator\Desktop\websiteasp_cafe\websitecafe\obj\Debug\websitecafe.csproj.GenerateResource.cache
 C:\Users\Administrator\Desktop\websiteasp_cafe\websitecafe\obj\Debug\websitecafe.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\Desktop\websiteasp_cafe\websitecafe\obj\Debug\websitec.8100D5F2.Up2Date
 C:\Users\Administrator\Desktop\websiteasp_cafe\websitecafe\obj\Debug\websitecafe.dll
 C:\Users\Administrator\Desktop\websiteasp_cafe\websitecafe\obj\Debug\websitecafe.pdb
-C:\Users\Administrator\Desktop\websiteasp_cafe\websitecafe\obj\Debug\websitecafe.Migrations.addcolum.resources
+C:\Users\Administrator\Desktop\websiteasp_cafe\websitecafe\obj\Debug\websitecafe.Migrations.newdb.resources
+C:\Users\Administrator\Desktop\websiteasp_cafe\websitecafe\obj\Debug\websitecafe.csproj.GenerateResource.cache

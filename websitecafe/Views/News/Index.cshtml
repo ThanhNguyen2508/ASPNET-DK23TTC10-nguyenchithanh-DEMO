@@ -1,0 +1,157 @@
+﻿@model List<websitecafe.Models.News>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    /* Phân trang */
+    .pagination .page-item .page-link {
+        background-color: white;
+        color: #6F4E37;
+        border: 1px solid #6F4E37;
+    }
+
+    .pagination .page-item.active .page-link {
+        background-color: #6F4E37;
+        color: white;
+        border-color: #6F4E37;
+    }
+
+    .pagination .page-item .page-link:hover {
+        background-color: #EDE0D4;
+        color: #6F4E37;
+    }
+
+    /* Nhãn danh mục */
+    .category-label {
+        font-weight: bold;
+        color: #6F4E37;
+        background: #EDE0D4;
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 14px;
+    }
+</style>
+<style>
+    .banner-area {
+        background: #6F4E37;
+        padding: 40px 0;
+        color: white;
+        text-align: left;
+    }
+
+    .primary-btn {
+        background: white;
+        color: #6F4E37;
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+
+    .btn-coffee {
+        background-color: #6F4E37; /* Màu cà phê */
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background 0.3s, transform 0.2s;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+        .btn-coffee:hover {
+            background-color: #5a3d2b; /* Màu cà phê đậm hơn */
+            color: white;
+            transform: scale(1.05); /* Hiệu ứng phóng to nhẹ */
+            box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-coffee:active {
+            background-color: #4a3225;
+            transform: scale(0.98);
+        }
+
+        .btn-coffee i {
+            margin-right: 5px;
+        }
+</style>
+
+<section class="banner-area">
+    <div class="container text-start">
+
+    </div>
+</section>
+
+<section class="menu-area section-gap" id="coffee">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-10">
+                <div class="title text-center">
+                    <h1 class="mb-10">Những bài viết của chúng tôi</h1>
+                </div>
+            </div>
+        </div><!-- Danh sách sản phẩm -->
+        <div class="row">
+            @if (Model != null)
+            {
+                foreach (var news in Model)
+                {
+                    <div class="col-lg-6 col-md-6 single-blog">
+                        <a href="@Url.Action("Details", "News", new { id = news.Id })" style="display: block;">
+                            <img class="img-fluid" src="~/Content/img/@news.ImageUrl" alt="@news.Title">
+                        </a>
+                        <p class="topic-label"><i class="fa fa-tag"></i> @news.Topic.Name</p>
+                        <a href="@Url.Action("Details", "News", new { id = news.Id })">
+                            <h4>@news.Title</h4>
+                        </a>
+                        <p>@news.ShortDescription</p>
+                    </div>
+                }
+            }
+            else
+            {
+                <p class="text-center">Không có tin tức nào để hiển thị.</p>
+            }
+        </div>
+
+        <!-- Phân trang -->
+        <div class="row mt-4">
+            <div class="col-lg-12 text-center">
+                <nav>
+                    <ul class="pagination justify-content-center">
+                        @if (ViewBag.CurrentPage > 1)
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage - 1, categoryId = ViewBag.CategoryId, search = ViewBag.Search })">«</a>
+                            </li>
+                        }
+
+                        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                        {
+                            <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                                <a class="page-link" href="@Url.Action("Index", new { page = i, categoryId = ViewBag.CategoryId, search = ViewBag.Search })">@i</a>
+                            </li>
+                        }
+
+                        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage + 1, categoryId = ViewBag.CategoryId, search = ViewBag.Search })">»</a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.getElementById("categoryFilter").addEventListener("change", function () {
+        document.getElementById("searchForm").submit();
+    });
+</script>
+
+

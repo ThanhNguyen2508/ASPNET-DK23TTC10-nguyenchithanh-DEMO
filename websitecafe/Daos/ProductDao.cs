@@ -106,5 +106,16 @@ namespace websitecafe.DAO
         {
             return _context.Categories.ToList();
         }
+
+        public List<Product> GetRelatedProducts(int productId, int categoryId, int top = 4)
+        {
+            return _context.Products
+                           .Include("Category")
+                           .Where(p => p.CategoryId == categoryId && p.Id != productId) // Cùng danh mục, khác sản phẩm hiện tại
+                           .OrderByDescending(p => p.View) // Ưu tiên sản phẩm có nhiều lượt xem
+                           .Take(top) // Giới hạn số lượng
+                           .ToList();
+        }
+
     }
 }

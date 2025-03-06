@@ -236,20 +236,18 @@
     <Compile Include="Controllers\AuthencationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModulesController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Daos\CategoryDao.cs" />
+    <Compile Include="Daos\NewsDao.cs" />
     <Compile Include="Daos\ProductDao.cs" />
     <Compile Include="Daos\UserDao.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202503031356401_InitialCreate.cs" />
-    <Compile Include="Migrations\202503031356401_InitialCreate.Designer.cs">
-      <DependentUpon>202503031356401_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202503041457089_addcolum.cs" />
-    <Compile Include="Migrations\202503041457089_addcolum.Designer.cs">
-      <DependentUpon>202503041457089_addcolum.cs</DependentUpon>
+    <Compile Include="Migrations\202503051338476_newdb.cs" />
+    <Compile Include="Migrations\202503051338476_newdb.Designer.cs">
+      <DependentUpon>202503051338476_newdb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
@@ -1047,6 +1045,9 @@
     <Content Include="Views\Authentication\Signup.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Authentication\ForgotPassword.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\News\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1080,11 +1081,8 @@
     <Content Include="Scripts\jquery-3.7.0.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202503031356401_InitialCreate.resx">
-      <DependentUpon>202503031356401_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202503041457089_addcolum.resx">
-      <DependentUpon>202503041457089_addcolum.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202503051338476_newdb.resx">
+      <DependentUpon>202503051338476_newdb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
