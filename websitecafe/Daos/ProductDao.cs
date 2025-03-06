@@ -24,6 +24,12 @@ namespace websitecafe.DAO
                            .ToList();
         }
 
+        public List<Product> GetAllProducts()
+        {
+            return _context.Products.Include("Category").ToList();
+        }
+
+
         public List<Product> GetProductsByPage(int pageNumber, int pageSize, out int totalProducts, int? categoryId, string search)
         {
             var query = _context.Products.Include("Category").AsQueryable();

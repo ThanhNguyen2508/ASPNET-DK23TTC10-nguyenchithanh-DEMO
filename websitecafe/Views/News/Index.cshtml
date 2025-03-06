@@ -100,7 +100,7 @@
                 {
                     <div class="col-lg-6 col-md-6 single-blog">
                         <a href="@Url.Action("Details", "News", new { id = news.Id })" style="display: block;">
-                            <img class="img-fluid" src="~/Content/img/@news.ImageUrl" alt="@news.Title">
+                            <img class="img-fluid" src="~/Content/images/@news.ImageUrl" alt="@news.Title" style="width : 480px; height : 300px">
                         </a>
                         <p class="topic-label"><i class="fa fa-tag"></i> @news.Topic.Name</p>
                         <a href="@Url.Action("Details", "News", new { id = news.Id })">

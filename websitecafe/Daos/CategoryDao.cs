@@ -9,9 +9,9 @@ namespace websitecafe.DAO
     {
         private readonly DBWebcafeContext _context;
 
-        public CategoryDao(DBWebcafeContext context)
+        public CategoryDao()
         {
-            _context = context;
+            _context = new DBWebcafeContext();
         }
 
         public List<Category> GetAllCategories()
@@ -22,6 +22,11 @@ namespace websitecafe.DAO
         public Category GetCategoryById(int id)
         {
             return _context.Categories.FirstOrDefault(c => c.Id == id);
+        }
+
+        public List<Product> GetProductsByCate(int id)
+        {
+            return _context.Products.Where(c => c.CategoryId == id).ToList();
         }
 
         public void AddCategory(Category category)

@@ -17,11 +17,21 @@ namespace websitecafe
               url: "Booking/Delete/{id}",
               defaults: new { controller = "Booking", action = "Delete", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "admin",
+                url: "admin",
+                defaults: new { controller = "AdminHome", action = "Index" }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            
+
         }
     }
 }

@@ -68,38 +68,40 @@ namespace websitecafe.DAO
                            .FirstOrDefault(n => n.Id == id);
         }
 
-        public void AddNews(News news)
+        public List<News> GetAllNews()
         {
-            _context.News.Add(news);
+            return _context.News.Include("Topic").ToList();
+        }
+
+
+        public void AddNews(News News)
+        {
+            _context.News.Add(News);
             _context.SaveChanges();
         }
 
-        public bool UpdateNews(News news)
+        public void UpdateNews(News News)
         {
-            var existingNews = _context.News.Find(news.Id);
-            if (existingNews == null)
-                return false;
-
-            existingNews.Title = news.Title;
-            existingNews.ShortDescription = news.ShortDescription;
-            existingNews.Content = news.Content;
-            existingNews.ImageUrl = news.ImageUrl;
-            existingNews.PublishedDate = news.PublishedDate;
-            existingNews.TopicId = news.TopicId;
-
-            _context.SaveChanges();
-            return true;
+            var existingNews = _context.News.Find(News.Id);
+            if (existingNews != null)
+            {
+                existingNews.Title = News.Title;
+                existingNews.ShortDescription = News.ShortDescription;
+                existingNews.Content = News.Content;
+                existingNews.ImageUrl = News.ImageUrl;
+                existingNews.TopicId = News.TopicId;
+                _context.SaveChanges();
+            }
         }
 
-        public bool DeleteNews(int id)
+        public void DeleteNews(int id)
         {
-            var news = _context.News.Find(id);
-            if (news == null)
-                return false;
-
-            _context.News.Remove(news);
-            _context.SaveChanges();
-            return true;
+            var News = _context.News.Find(id);
+            if (News != null)
+            {
+                _context.News.Remove(News);
+                _context.SaveChanges();
+            }
         }
 
         public List<News> GetNewsByPage(int pageNumber, int pageSize, out int totalNews, int? topicId)

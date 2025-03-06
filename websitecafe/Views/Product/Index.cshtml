@@ -132,7 +132,7 @@
                 <div class="col-lg-4">
                     <div class="single-menu text-center">
                         <a href="@Url.Action("Details", "Product", new { id = product.Id })" style="display: block;">
-                            <img src="~/Content/img/@product.ImageUrl" class="img-fluid mb-3" alt="@product.Name">
+                            <img src="~/Content/images/@product.ImageUrl" class="img-fluid mb-3" alt="@product.Name">
                         </a>
                         <div class="title-div justify-content-between d-flex">
                             <h4>
@@ -149,7 +149,7 @@
                                 ? product.Description.Substring(0, maxLength) + "..."
                                 : product.Description;
                         }
-                        <p>@Html.Raw(description)</p>
+                        @*<p>@Html.Raw(description)</p>*@
                         <p class="text-muted"><i class="fa fa-eye"></i> @product.View lượt xem</p>
                     </div>
                 </div>

@@ -232,7 +232,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Admin\AdminAuthenController.cs" />
+    <Compile Include="Controllers\Admin\AdminCategoryController.cs" />
+    <Compile Include="Controllers\Admin\AdminHomeController.cs" />
     <Compile Include="Controllers\Admin\AdminModulesController.cs" />
+    <Compile Include="Controllers\Admin\AdminNewsController.cs" />
+    <Compile Include="Controllers\Admin\AdminProductController.cs" />
+    <Compile Include="Controllers\Admin\AdminTopicController.cs" />
     <Compile Include="Controllers\AuthencationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModulesController.cs" />
@@ -241,6 +247,7 @@
     <Compile Include="Daos\CategoryDao.cs" />
     <Compile Include="Daos\NewsDao.cs" />
     <Compile Include="Daos\ProductDao.cs" />
+    <Compile Include="Daos\TopicDao.cs" />
     <Compile Include="Daos\UserDao.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1048,9 +1055,16 @@
     <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\News\Details.cshtml" />
+    <Content Include="Views\AdminHome\Index.cshtml" />
+    <Content Include="Views\AdminNews\Index.cshtml" />
+    <Content Include="Views\AdminCategory\Index.cshtml" />
+    <Content Include="Views\AdminProduct\Index.cshtml" />
+    <Content Include="Views\AdminTopic\Index.cshtml" />
+    <Content Include="Views\AdminAuthen\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\images\" />
     <Folder Include="Views\Authencation\" />
   </ItemGroup>
   <ItemGroup>

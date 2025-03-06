@@ -33,7 +33,7 @@
                         Bắt đầu ngày mới <br>
                         với một ly Cà Phê
                     </h1>
-                    <a href="@Url.Action("Index", "Product")" class="primary-btn text-uppercase">Tìm hiểu thêm về sản phẩm</a>
+                    <a href="@Url.Action("Login", "Authentication")" class="primary-btn text-uppercase">Tìm hiểu thêm về sản phẩm</a>
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
             <div class="row justify-content-start align-items-center">
                 <div class="col-lg-6 video-right justify-content-center align-items-center d-flex">
                     <div class="overlay overlay-bg"></div>
-                    <a class="play-btn" href="https://www.youtube.com/watch?v=ARA0AxrnHdM">
+                    <a class="play-btn" href="https://www.youtube.com/watch?v=YQ2MIDrRcWM">
                         <img class="img-fluid" src="~/Content/img/play-icon.png" alt="Phát video">
                     </a>
                 </div>
@@ -87,13 +87,13 @@
                                 @if (userInfomatiom != null)
                                 {
                                     <a href="@Url.Action("Details", "Product", new { id = product.Id })" style="display: block;">
-                                        <img src="~/Content/imges/@product.ImageUrl" class="img-fluid mb-3" alt="@product.Name">
+                                        <img src="~/Content/images/@product.ImageUrl" class="img-fluid mb-3" alt="@product.Name">
                                     </a>
                                 }
                                 else
                                 {
                                     <a href="@Url.Action("Login", "Authentication")" style="display: block;" onclick="return confirm('Bạn cần đăng nhập để xem chi tiết sản phẩm!')">
-                                        <img src="~/Content/imges/@product.ImageUrl" class="img-fluid mb-3" alt="@product.Name">
+                                        <img src="~/Content/images/@product.ImageUrl" class="img-fluid mb-3" alt="@product.Name">
                                     </a>
                                 }
 
@@ -122,7 +122,7 @@
                                         ? product.Description.Substring(0, maxLength) + "..."
                                         : product.Description;
                                 }
-                                <p>@Html.Raw(description)</p>
+                                @*<p>@Html.Raw(description)</p>*@
                                 <p class="text-muted"><i class="fa fa-eye"></i> @product.View lượt xem</p>
                             </div>
                         </div>
@@ -141,7 +141,7 @@
                 }
                 else
                 {
-                    <a href="@Url.Action("Login", "Authentication")" class="btn btn-coffee" onclick="return confirm('Bạn cần đăng nhập để xem thêm sản phẩm!')">Xem thêm</a>
+                    <a href="@Url.Action("Login", "Authentication")" class="btn btn-coffee">Đăng nhập để xem nhiều loại Cà Phê hơn</a>
                 }
             </div>
         </div>
@@ -218,24 +218,113 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-6 single-review">
-                    <img src="https://cdn-icons-png.flaticon.com/256/13078/13078067.png" alt="Khách hàng 1" style="width: 30px;">
-                    <div class="title d-flex flex-row">
-                        <h4>Khách hàng A</h4>
-                        <div class="star">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
+
+            <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-md-4 single-review text-center">
+                                <img src="https://cdn-icons-png.flaticon.com/256/13078/13078067.png" alt="Khách hàng 1" style="width: 50px;">
+                                <h4>Khách hàng A</h4>
+                                <div class="star">
+                                    ⭐⭐⭐⭐☆
+                                </div>
+                                <p>Đồ uống ở đây quá ngon, cafe hương vị đậm đà</p>
+                            </div>
+                            <div class="col-md-4 single-review text-center">
+                                <img src="https://cdn-icons-png.flaticon.com/256/13078/13078067.png" alt="Khách hàng 2" style="width: 50px;">
+                                <h4>Khách hàng B</h4>
+                                <div class="star">
+                                    ⭐⭐⭐⭐☆
+                                </div>
+                                <p>Dịch vụ rất tốt, nhân viên thân thiện.</p>
+                            </div>
+                            <div class="col-md-4 single-review text-center">
+                                <img src="https://cdn-icons-png.flaticon.com/256/13078/13078067.png" alt="Khách hàng 3" style="width: 50px;">
+                                <h4>Khách hàng C</h4>
+                                <div class="star">
+                                    ⭐⭐⭐⭐⭐
+                                </div>
+                                <p>Không gian đẹp, rất thích hợp để thư giãn.</p>
+                            </div>
                         </div>
                     </div>
-                    <p>Đồ uống ở đây quá ngon, cafe hương vị đậm đà</p>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-4 single-review text-center">
+                                <img src="https://cdn-icons-png.flaticon.com/256/13078/13078067.png" alt="Khách hàng 4" style="width: 50px;">
+                                <h4>Khách hàng D</h4>
+                                <div class="star">
+                                    ⭐⭐⭐☆☆
+                                </div>
+                                <p>Quán rộng rãi, nhân viên dễ thương.</p>
+                            </div>
+                            <div class="col-md-4 single-review text-center">
+                                <img src="https://cdn-icons-png.flaticon.com/256/13078/13078067.png" alt="Khách hàng 5" style="width: 50px;">
+                                <h4>Khách hàng E</h4>
+                                <div class="star">
+                                    ⭐⭐⭐⭐⭐
+                                </div>
+                                <p>Cafe trứng rất ngon, sẽ quay lại.</p>
+                            </div>
+                            <div class="col-md-4 single-review text-center">
+                                <img src="https://cdn-icons-png.flaticon.com/256/13078/13078067.png" alt="Khách hàng 6" style="width: 50px;">
+                                <h4>Khách hàng F</h4>
+                                <div class="star">
+                                    ⭐⭐⭐⭐☆
+                                </div>
+                                <p>Nhạc nhẹ, không gian chill, rất thích!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-4 single-review text-center">
+                                <img src="https://cdn-icons-png.flaticon.com/256/13078/13078067.png" alt="Khách hàng 7" style="width: 50px;">
+                                <h4>Khách hàng G</h4>
+                                <div class="star">
+                                    ⭐⭐⭐☆☆
+                                </div>
+                                <p>Quán yên tĩnh, phù hợp làm việc.</p>
+                            </div>
+                            <div class="col-md-4 single-review text-center">
+                                <img src="https://cdn-icons-png.flaticon.com/256/13078/13078067.png" alt="Khách hàng 8" style="width: 50px;">
+                                <h4>Khách hàng H</h4>
+                                <div class="star">
+                                    ⭐⭐⭐⭐☆
+                                </div>
+                                <p>Đồ uống chất lượng, giá hợp lý.</p>
+                            </div>
+                            <div class="col-md-4 single-review text-center">
+                                <img src="https://cdn-icons-png.flaticon.com/256/13078/13078067.png" alt="Khách hàng 9" style="width: 50px;">
+                                <h4>Khách hàng I</h4>
+                                <div class="star">
+                                    ⭐⭐⭐⭐⭐
+                                </div>
+                                <p>Thích không gian mở, sáng sủa.</p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
+               
             </div>
         </div>
     </section>
+
+    <!-- Bootstrap -->
+    
+
+
+
+
     <!-- Kết thúc khu vực đánh giá -->
     <!-- Bắt đầu khu vực blog -->
     <section class="blog-area section-gap" id="blog">
@@ -255,7 +344,7 @@
                     {
                         <div class="col-lg-6 col-md-6 single-blog">
                             <a href="@Url.Action("Details", "News", new { id = news.Id })" style="display: block;">
-                                <img class="img-fluid" src="~/Content/imges/@news.ImageUrl" alt="@news.Title">
+                                <img class="img-fluid" src="~/Content/images/@news.ImageUrl" alt="@news.Title" style=" width: 480px; height: 300px;">
                             </a>
                             <p class="topic-label"><i class="fa fa-tag"></i> @news.Topic.Name</p>
                             <a href="@Url.Action("Details", "News", new { id = news.Id })">
@@ -277,7 +366,7 @@
                 }
                 else
                 {
-                    <a href="@Url.Action("Login", "Authentication")" class="btn btn-coffee" onclick="return confirm('Bạn cần đăng nhập để xem thêm sản phẩm!')">Xem thêm</a>
+                    <a href="@Url.Action("Login", "Authentication")" class="btn btn-coffee">Đăng nhập để xem nhiều Tin Tức hơn</a>
                 }
             </div>
         </div>
