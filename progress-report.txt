@@ -17,6 +17,8 @@ Update code
 Update database
 --- Tiến độ 06/03/2025
 Hoàn thành website
+--- Tiến độ 08/03/2025
+Cập nhật lại Readme.md
 
 
 
